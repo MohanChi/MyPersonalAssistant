@@ -1,0 +1,518 @@
+.head-bar {
+    width: 100%;
+    position: fixed;
+    height: 50px;
+    left: 0;
+    top: 0;
+    background: #132533;
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+
+p {
+    color: white;
+}
+
+.head-bar p {
+    margin-left: 15px;
+    margin-right: 65%;
+    color: white;
+    font-size: 0.5cm;
+}
+
+.head-bar a {
+    margin-top: 25px;
+    left: 100px;
+    width: 100px;
+    height: 50px;
+    color: #f3f7fa;
+    text-decoration: none;
+    align-items: center;
+    font-size: 0.5cm;
+}
+
+.logo a {
+    font-size: 0.7em;
+    left: 10px;
+    color: #fff;
+    margin: 0;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: capitalize;
+}
+
+.logo a span {
+    color: #000;
+}
+
+.left-side {
+    width: 160px;
+    position: fixed;
+    height: 100%;
+    top: 50px;
+    left: 0;
+    background: #f3f7fa;
+    padding: 0;
+}
+
+.left-side .menu {
+    list-style: none;
+    padding-inline-start: initial;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.left-side .menu li {
+    /*height: 101px;*/
+    height: 14%;
+    left: 0;
+    margin-top: 2px;
+}
+
+.left-side .menu a {
+    font-size: 0.5cm;
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    background: #132533;
+}
+
+.left-side .menu .current{
+    font-size: 0.5cm;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    background: #f3f7fa;
+}
+
+.left-side .menu a span{
+    display: block;
+    width: 100%;
+    margin-top: 7%;
+    align-items: center;
+}
+
+.new-task {
+    position: fixed;
+    width: 100%;
+    height: 92%;
+    left: 160px;
+    top: 50px;
+    background: #f3f7fa;
+}
+
+.new-task .new-task-item {
+    /*float: left;*/
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.new-task .new-task-item input, select{
+    width: 300px;
+    height: 30px;
+}
+
+.new-task .new-task-item .check{
+    width: 20px;
+    height: 20px;
+}
+
+.new-task .new-task-item .submit{
+    font-family: "Times New Roman";
+    font-size: 0.5cm;
+    width: 150px;
+    height: 50px;
+    background: #2c6db2;
+    color: white;
+    border: none;
+    border-radius: 5%;
+}
+
+.done {
+    position: fixed;
+    bottom: 100px;
+    right: 80px;
+    text-align: center;
+}
+
+.done a{
+    width: 150px;
+    height: 80px;
+    background: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.5cm;
+}
+
+.done a span {
+    width: 100%;
+}
+
+.footer-bar {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    bottom: 0;
+    background: #132533;
+    align-items: center;
+    text-align: center;
+}
+
+.main-page-content {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    bottom: 50px;
+    background: whitesmoke;
+}
+
+.main-page-content .main-image{
+    float: left;
+    margin-top: 3%;
+    margin-left: 5%;
+    width: 90%;
+    height: 50%;
+    /*position: center;*/
+    /*background: blueviolet;*/
+    text-align: center;
+    align-items: center;
+}
+
+img{
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    height:auto;
+    align-items: center;
+}
+
+.main-page-content .main-buttons{
+    margin-bottom: 30%;
+    margin-left: 5%;
+    width: 90%;
+    height: 30%;
+    text-align: center;
+    /*background: coral;*/
+}
+
+.main-page-content .main-buttons a {
+    font-size: 0.5cm;
+    width: 15%;
+    height: 70%;
+    margin: 2.5%;
+    float: left;
+    background: #132533;
+    color: #f3f7fa;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 20%;
+}
+
+.main-page-content .main-buttons a span {
+    width: 100%;
+    align-items: center;
+}
+
+#tb-task{
+    margin-left: 50px;
+    border-collapse: collapse;
+    width: 80%;
+    height: 60%;
+    font-size: large;
+}
+
+#tb-task #title{
+    background: #132533;
+    color: #f3f7fa;
+    text-align: center;
+}
+
+#tb-task .trlight{
+    background-color: darkgrey;
+    text-align: center;
+    color: #132533;
+}
+#tb-task .trdark{
+    background-color: whitesmoke;
+    text-align: center;
+    color: #132533;
+}
+#tb-task,tr,th,td{
+    border-bottom-width: 1px;
+    border-bottom-color: darkgrey;
+}
+
+.new-task #task-selected {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.new-task #event-selected {
+    margin-top: -50px;
+    margin-left: 150px;
+}
+
+.new-task #task-selected #selected{
+    width: 100px;
+    height: 50px;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    background: #132533;
+    color: #f3f7fa;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.5cm;
+}
+
+.new-task #task-selected a span, .new-task #event-selected a span{
+    display: block;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.new-task #event-selected #eselected{
+    width: 100px;
+    height: 50px;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    background: #d3d3d3;
+    color: #f3f7fa;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.5cm;
+}
+
+#tb-event{
+    margin-left: 50px;
+    border-collapse: collapse;
+    width: 80%;
+    height: 30%;
+    font-size: large;
+    display: none;
+}
+
+#tb-event .title{
+    background: #132533;
+    color: #f3f7fa;
+    text-align: center;
+}
+
+#tb-event .trlight{
+    background-color: darkgrey;
+    text-align: center;
+    color: #132533;
+}
+#tb-event .trdark{
+    background-color: whitesmoke;
+    text-align: center;
+    color: #132533;
+}
+#tb-event,tr,th,td{
+    border-bottom-width: 1px;
+    border-bottom-color: darkgrey;
+}
+
+#button-add {
+    font-family: "Times New Roman";
+    font-size: 0.5cm;
+    margin-left: 75%;
+    margin-top: 5%;
+    width: 100px;
+    height: 30px;
+    background: #2c6db2;
+    color: white;
+    border: none;
+    border-radius: 5%;
+}
+
+#tb-calendar{
+    margin-left: 50px;
+    /*margin-top: 50px;*/
+    /*border-collapse: collapse;*/
+    width: 80%;
+    height: 80%;
+    font-size: large;
+    border-width: 2px;
+    border-color: darkgrey;
+}
+
+#tb-calendar .title{
+    background: #132533;
+    color: #f3f7fa;
+    text-align: center;
+}
+
+#tb-calendar .calendar-day{
+    background-color: lightgrey;
+    text-align: center;
+    color: #132533;
+}
+#tb-calendar,tr,th,td{
+    border-width: 2px;
+    border-color: darkgrey;
+}
+
+@media screen and (max-height: 650px)  {
+    .new-task .new-task-item {
+        float: left;
+    }
+}
+
+@media screen and (max-height: 500px)  {
+    .new-task .new-task-item {
+        float: left;
+    }
+
+    .left-side .menu li {
+        height: 12%;
+    }
+}
+
+.week-select{
+    font-family: "Microsoft Sans Serif";
+    display: flex;
+    width: 300px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 50px;
+    align-items: center;
+}
+
+.week-select a{
+    color: #132533;
+    text-decoration: none;
+    align-items: center;
+}
+
+.week-select h4{
+    color: #132533;
+}
+
+#friends{
+    position: fixed;
+    width: 100%;
+    height: 92%;
+    left: 160px;
+    top: 50px;
+    background: #f3f7fa;
+    display: flex;
+}
+
+#friends #friend-list {
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 300px;
+    height: 500px;
+    background: darkgrey;
+    overflow: scroll;
+}
+
+#friends ul {
+    list-style: none;
+    padding-inline-start: initial;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#friends ul li {
+    height: 80px;
+    left: 0;
+    margin-top: 2px;
+    display: flex;
+    text-align: center;
+    color: #132533;
+    background: lightgrey;
+}
+
+#friends ul li span {
+    font-size: large;
+    display: block;
+    width: 100%;
+    align-items: center;
+    line-height: 80px;
+}
+
+#friends ul .current-friend {
+    color: lightgrey;
+    background: lightslategray;
+}
+
+
+#friends #friend-calendar {
+    margin-left: 80px;
+    margin-top: 50px;
+    width: 700px;
+    height: 500px;
+    /*background: coral;*/
+    text-align: center;
+    display: block;
+}
+
+
+#friend-calendar img {
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    height:auto;
+    /*align-items: center;*/
+    margin-top: 15%;
+}
+
+.test {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    left: 160px;
+    top: 200px
+}
+
+.main-page-content .login-content{
+    float: left;
+    margin-top: 3%;
+    margin-left: 20%;
+    width: 60%;
+    height: 85%;
+    /*position: center;*/
+    background: lightgrey;
+    text-align: center;
+    border-radius: 10%;
+}
+
+.main-page-content .login-content .user-info {
+    margin-top: 13%;
+}
+
+.main-page-content .login-content .user-info input {
+    width: 300px;
+    height: 30px;
+}
+
+.main-page-content .login-content .user-info .submit {
+    color: #f3f7fa;
+    background: #2c6db2;
+    border: none;
+    height: 50px;
+    /*border-radius: 10%;*/
+}
+

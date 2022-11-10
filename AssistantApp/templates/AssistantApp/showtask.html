@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Task</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'AssistantApp/style.css' %}">
+    <script src="{% static 'AssistantApp/index.js' %}"></script>
+
+<!--    <link href="css/style.css" rel='stylesheet' type='text/css'/>-->
+<!--    <script src="javascript/index.js"></script>-->
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bdf56c03f7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="head-bar">
+    <p><span> </span><i class="fa-solid fa-user"></i> Hi! {{username}}</p>
+    <a href="{% url 'logout' %}">Log out</a>
+</div>
+
+<div class="left-side">
+    <ul class="menu">
+        <li><a href="{% url 'index' %}"><span><i class="fa-solid fa-house"></i> Home</span></a></li>
+        <li><a href="{% url 'new_task' %}"><span><i class="fa-sharp fa-solid fa-pen-to-square"></i> New Task</span></a></li>
+        <li><a href="{% url 'new_task' %}"><span><i class="fa-solid fa-folder-closed"></i> Schedule Event</span></a></li>
+        <li><a href="{% url 'agenda' %}"><span><i class="fa-solid fa-list"></i> Agenda</span></a></li>
+        <li><a href="{% url 'agenda' %}"><span><i class="fa-solid fa-calendar-days"></i> Calendar</span></a></li>
+        <li><a href="{% url 'agenda' %}"><span><i class="fa-solid fa-user-group"></i> Friends</span></a></li>
+    </ul>
+</div>
+
+<div class="new-task">
+    <form action="" method="POST">
+            <div class="new-task-item">
+                <span>Task Name</span><br>
+                <div>{{task.taskname}}</div>
+            </div>
+            <div class="new-task-item">
+                <span>Due</span><br>
+                <div>{{task.due|date:'Y-m-d\TH:i'}}</div>
+            </div>
+            <div class="new-task-item">
+                <span>Priority</span><br>
+                <div>{{task.priority}}</div>
+            </div>
+            <div class="new-task-item">
+                <span>Type</span><br>
+                <div>{{task.type}}</div>
+            </div>
+            <div class="new-task-item">
+                <span>Difficulty</span><br>
+                <div>{{task.difficulty}}</div>
+            </div>
+            <div class="new-task-item">
+                <span>Detail</span><br>
+                <div>{{task.detail}}</div>
+            </div>
+    </form>
+</div>
+
+<div class="footer-bar">
+    <p>© Mohan Chi</p>
+</div>
+
+</body>
+</html>

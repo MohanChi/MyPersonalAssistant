@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Task</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'AssistantApp/style.css' %}">
+    <script src="{% static 'AssistantApp/index.js' %}"></script>
+
+<!--    <link href="css/style.css" rel='stylesheet' type='text/css'/>-->
+<!--    <script src="javascript/index.js"></script>-->
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bdf56c03f7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="head-bar">
+    <p><span> </span><i class="fa-solid fa-user"></i> Hi! {{username}}</p>
+    <a href="{% url 'logout' %}">Log out</a>
+</div>
+
+<div class="left-side">
+    <ul class="menu">
+        <li><a href="{% url 'index' %}"><span><i class="fa-solid fa-house"></i> Home</span></a></li>
+        <li><a class="current" href="{% url 'new_task' %}"><span><i class="fa-sharp fa-solid fa-pen-to-square"></i> New Task</span></a></li>
+        <li><a href="{% url 'new_task' %}"><span><i class="fa-solid fa-folder-closed"></i> Schedule Event</span></a></li>
+        <li><a href="{% url 'agenda' %}"><span><i class="fa-solid fa-list"></i> Agenda</span></a></li>
+        <li><a href="{% url 'agenda' %}"><span><i class="fa-solid fa-calendar-days"></i> Calendar</span></a></li>
+        <li><a href="{% url 'agenda' %}"><span><i class="fa-solid fa-user-group"></i> Friends</span></a></li>
+    </ul>
+</div>
+
+<div class="new-task">
+<!--    <div class="new-task-item">-->
+<!--        <div><span>Task Name</span></div>-->
+<!--        <input type="text"/>-->
+<!--    </div>-->
+<!--    <div class="new-task-item">-->
+<!--        <div><span>Due</span></div>-->
+<!--        <input type="datetime-local"/>-->
+<!--    </div>-->
+<!--    <div class="new-task-item">-->
+<!--        <div><span>Priority</span></div>-->
+<!--        <input type="number"/>-->
+<!--    </div>-->
+<!--    <div class="new-task-item">-->
+<!--        <div><span>Type</span></div>-->
+<!--        <input type="number"/>-->
+<!--    </div>-->
+<!--    <div class="new-task-item">-->
+<!--        <div><span>Difficulty</span></div>-->
+<!--        <input type="number"/>-->
+<!--    </div>-->
+<!--    <div class="new-task-item">-->
+<!--        <div><span>Detail</span></div>-->
+<!--        <input type="text"/>-->
+<!--    </div>-->
+<!--    <div class="new-task-item">-->
+<!--        <div><span>visible</span></div>-->
+<!--        <input type="checkbox"/>-->
+<!--    </div>-->
+<!--    <div class="done">-->
+<!--        <a href="javascript:void(0)"><span><i class="fa-solid fa-check"></i> Done</span></a>-->
+<!--    </div>-->
+    <form action="" method="POST">
+            <div class="new-task-item">
+                <span>Task Name</span><br>
+                <input type="text" name="taskname" value="{{task.taskname}}"/>
+            </div>
+            <div class="new-task-item">
+                <span>Due</span><br>
+                <input type="datetime-local" name="due" value="{{task.due|date:'Y-m-d\TH:i'}}"/>
+            </div>
+            <div class="new-task-item">
+                <span>Priority</span><br>
+                <input type="number" name="priority" value="{{task.priority}}"/>
+            </div>
+            <div class="new-task-item">
+                <span>Type</span><br>
+                <input type="text" name="type" value="{{task.type}}"/>
+            </div>
+            <div class="new-task-item">
+                <span>Difficulty</span><br>
+                <input type="number" name="difficulty" value="{{task.difficulty}}"/>
+            </div>
+            <div class="new-task-item">
+                <span>Detail</span><br>
+                <input type="text" name="detail" value="{{task.detail}}"/>
+            </div>
+            <input type="hidden" name="id" value="{{task.id}}">
+            <div class="new-task-item">
+                <input class="submit" type="submit" value="submit">
+            </div>
+    </form>
+</div>
+
+<div class="footer-bar">
+    <p>© Mohan Chi</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Agenda</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'AssistantApp/style.css' %}">
+    <script src="{% static 'AssistantApp/index.js' %}"></script>
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bdf56c03f7.js" crossorigin="anonymous"></script>
+
+    {% block javascript %}
+    <script>
+        {% for task in tasklist %}
+        $(document).ready(function () {
+            $('#{{ task.id }}-del').click(function () {
+                $.ajaxSetup({
+                    data: {
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    }
+                })
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'agenda' %}",
+                    data: {'id':{{ task.id }}},
+                    dataType: 'text',
+                    success: function () {
+                        window.location.reload()
+                    },
+                })
+            })
+        })
+        {%  endfor %}
+    </script>
+    {% endblock %}
+
+
+</head>
+
+<body>
+<div class="head-bar">
+    <p><span> </span><i class="fa-solid fa-user"></i> Hi! {{username}}</p>
+    <a href="{% url 'logout' %}">Log out</a>
+</div>
+
+<div class="left-side">
+    <ul class="menu">
+        <li><a href="{% url 'index' %}"><span><i class="fa-solid fa-house"></i> Home</span></a></li>
+        <li><a href="{% url 'new_task' %}"><span><i class="fa-sharp fa-solid fa-pen-to-square"></i> New Task</span></a></li>
+        <li><a href="{% url 'new_task' %}"><span><i class="fa-solid fa-folder-closed"></i> Schedule Event</span></a></li>
+        <li><a class="current" href="{% url 'agenda' %}"><span><i class="fa-solid fa-list"></i> Agenda</span></a></li>
+        <li><a href="{% url 'agenda' %}"><span><i class="fa-solid fa-calendar-days"></i> Calendar</span></a></li>
+        <li><a href="{% url 'agenda' %}"><span><i class="fa-solid fa-user-group"></i> Friends</span></a></li>
+    </ul>
+</div>
+
+<div class="new-task">
+
+    <div id="task-selected">
+        <a id="selected" href="javascript:void(0)"><span><i class="fa-sharp fa-solid fa-pen-to-square"></i> Task</span></a>
+    </div>
+    <div id="event-selected">
+        <a id="eselected" href="javascript:void(0)"><span><i class="fa-solid fa-folder-closed"></i> Event</span></a>
+    </div>
+    <table id="tb-task">
+    <tr id="title">
+        <th>Task Name</th>
+        <th>Due</th>
+        <th>Priority</th>
+        <th>Type</th>
+        <th>Difficulty</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for task in tasklist %}
+    <tr class="trdark">
+        <td><a href="/AssistantApp/show-task?id={{task.id}}" style="text-decoration: none; color:black">
+            {{ task.taskname }}</a>
+        </td>
+        <td>{{ task.due }}</td>
+        <td>{{ task.priority }}</td>
+        <td>{{ task.type }}</td>
+        <td>{{ task.difficulty }}</td>
+        <td><i id="{{ task.id }}-del" class="fa-solid fa-trash-can"></i></td>
+        <td><a href="/AssistantApp/edit-task?id={{task.id}}" style="text-decoration: none; color:black">
+            <i class="fa-solid fa-file-pen"></i></a>
+        </td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+    <table id="tb-event">
+        <tr class="title">
+            <th>Event Name</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Type</th>
+            <th>Visibility</th>
+            <th></th>
+        </tr>
+        <tr class="trdark">
+            <td>SWD Lecture</td>
+            <td>10/04/2022 9:00am</td>
+            <td>10/04/2022 10:15am</td>
+            <td>project</td>
+            <td><i class="fa-solid fa-eye"></i></td>
+            <td><i class="fa-solid fa-trash-can"></i></td>
+        </tr>
+        <tr class="trlight">
+            <td>STAT Lecture</td>
+            <td>10/04/2022 1:30pm</td>
+            <td>10/04/2022 2:45pm</td>
+            <td>project</td>
+            <td><i class="fa-solid fa-eye-slash"></i></td>
+            <td><i class="fa-solid fa-trash-can"></i></td>
+        </tr>
+    </table>
+    <div style="margin-left: 50px">
+        <a style="text-decoration: none; color:black; border: 2px solid cornflowerblue; padding: 5px 10px" href="{% url 'new_task' %}"><i class="fa-solid fa-plus"></i> Add</a>
+    </div>
+</div>
+
+<div class="footer-bar">
+    <p>© Mohan Chi</p>
+</div>
+
+</body>
+</html>

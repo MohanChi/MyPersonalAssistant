@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyPersonalAssistant - Login</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'AssistantApp/style.css' %}">
+    <script src="{% static 'AssistantApp/jquery.js' %}"></script>
+
+<!--    <script src="jquery.js"></script>-->
+<!--    <link href="css/style.css" rel='stylesheet' type='text/css'/>-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/bdf56c03f7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="head-bar">
+    <p><span> </span><i class="fa-solid fa-user"></i> My Personal Assistant</p>
+</div>
+
+<div class="main-page-content">
+    <div class="login-content">
+        <form action="" method="POST">
+            <div class="user-info">
+                <span>Username</span><br>
+                <input type="text" name="username"/>
+            </div>
+            <div class="user-info">
+                <span>Password</span><br>
+                <input type="password" name="password"/>
+            </div>
+            <div class="user-info">
+                <input class="submit" type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="footer-bar">
+    <p>© Mohan Chi</p>
+</div>
+
+</body>
+</html>

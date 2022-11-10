@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyPersonalAssistant</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'AssistantApp/style.css' %}">
+    <script src="{% static 'AssistantApp/jquery.js' %}"></script>
+
+<!--    <script src="jquery.js"></script>-->
+<!--    <link href="css/style.css" rel='stylesheet' type='text/css'/>-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/bdf56c03f7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="head-bar" style="color: #f3f7fa">
+    <p><span> </span><i class="fa-solid fa-user"></i> My Personal Assistant</p>
+    <a href="{% url 'login' %}">Log in</a> /
+    <a href="{% url 'login' %}">Sign up</a>
+</div>
+
+<div class="main-page-content">
+    <div class="main-image">
+        <img src="{% static 'AssistantApp/image/calendar1.jpeg' %}" alt="">
+    </div>
+    <div class="main-buttons">
+        <a href="{% url 'new_task' %}"><span><i class="fa-sharp fa-solid fa-pen-to-square"></i> New Task</span></a>
+        <a href="{% url 'new_task' %}"><span><i class="fa-solid fa-folder-closed"></i> Schedule Event</span></a>
+        <a href="{% url 'agenda' %}"><span><i class="fa-solid fa-list"></i> Agenda</span></a>
+        <a href="{% url 'agenda' %}"><span><i class="fa-solid fa-calendar-days"></i> Calendar</span></a>
+        <a href="{% url 'agenda' %}"><span><i class="fa-solid fa-user-group"></i> Friends</span></a>
+    </div>
+</div>
+
+<div class="footer-bar">
+    <p>© Mohan Chi</p>
+</div>
+
+</body>
+</html>
