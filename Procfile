@@ -1,0 +1,1 @@
+web: gunicorn MyPersonalAssistant.wsgi --log-file -
