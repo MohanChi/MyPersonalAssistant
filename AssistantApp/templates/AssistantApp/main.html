@@ -33,6 +33,10 @@
         <a href="{% url 'agenda' %}"><span><i class="fa-solid fa-calendar-days"></i> Calendar</span></a>
         <a href="{% url 'agenda' %}"><span><i class="fa-solid fa-user-group"></i> Friends</span></a>
     </div>
+    <div style="margin-bottom: 5%; margin-left: 5%; width: 90%; height: 10%; text-align: center;">
+        <span style="font-size: x-large; font-style: italic; color: #132533">Today's Quote</span><br>
+        <span style="font-size: large; font-style: italic; color: #132533">"{{quote}}" from {{author}}</span>
+    </div>
 </div>
 
 <div class="footer-bar">

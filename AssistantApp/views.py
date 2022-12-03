@@ -5,12 +5,23 @@ from django.shortcuts import redirect
 from AssistantApp.models import *
 from django.http import JsonResponse
 from datetime import datetime
+import requests
+import json
 
 # Create your views here.
 
 def index(request):
     template = loader.get_template('AssistantApp/main.html')
-    context = {}
+    category = ''
+    api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
+    response = requests.get(api_url, headers={'X-Api-Key': 'Zf+5oCDSXry8Eo15++PzeQ==RS4UwzQeJ2KBxAFm'})
+    if response.status_code == requests.codes.ok:
+         print(response.text)
+    else:
+         print("Error:", response.status_code, response.text)
+    res_json = response.json()
+    print(res_json[0].get('quote'))
+    context = {'quote': res_json[0].get('quote'), 'author': res_json[0].get('author')}
     return HttpResponse(template.render(context, request))
 
 def login(request):
@@ -105,5 +116,16 @@ def agenda(request):
 def show_task(request):
     template = loader.get_template('AssistantApp/showtask.html')
     task = task_Model.objects.get(id=request.GET.get('id'))
-    context = {'username': request.session["username"], 'task': task}
+
+    category = ''
+    api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
+    response = requests.get(api_url, headers={'X-Api-Key': 'Zf+5oCDSXry8Eo15++PzeQ==RS4UwzQeJ2KBxAFm'})
+    if response.status_code == requests.codes.ok:
+        print(response.text)
+    else:
+        print("Error:", response.status_code, response.text)
+
+    context = {'username': request.session["username"], 'task': task, 'responseQuote': response.text}
+
     return HttpResponse(template.render(context, request))
+
