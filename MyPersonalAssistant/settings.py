@@ -17,9 +17,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'AssistantApp', 'static')
+    os.path.join(BASE_DIR, 'static')
 ]
-STATIC_ROOT = STATICFILES_DIRS[0]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
