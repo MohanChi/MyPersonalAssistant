@@ -74,6 +74,7 @@ gmpy2==2.0.8
 google-pasta==0.2.0
 greenlet @ file:///opt/concourse/worker/volumes/live/0051114e-81b1-4a15-4054-b5a71cd53179/volume/greenlet_1600874059672/work
 grpcio==1.36.1
+gunicorn==20.0.4
 h5py==2.10.0
 HeapDict==1.0.1
 html5lib @ file:///tmp/build/80754af9/html5lib_1593446221756/work
