@@ -1,8 +1,11 @@
 # MyPersonalAssistant
 ## 1. Purpose
 This website was developed as a daily planer, users could manage their time by recording and editing their tasks. This tool aims to:
+
 1.1 Provid users with ***clear, distinct, learnable*** functions for managing daily tasks, make it easier for users to well plan their time.
+
 1.2  Organize users' tasks online, users could see and edit their task lists whether at home or on a trip and make their schedule organized.
+
 1.3  Generate calenders for users as a good way for them to get access to their long-term time arrangement.
 
 ## 2. Audience
