@@ -11,3 +11,8 @@ class task_Model(models.Model):
        difficulty = models.CharField(max_length=32)
        detail = models.CharField(max_length=32)
        visible = models.CharField(max_length=32)
+
+class User(models.Model):
+    username = models.CharField(max_length=32)
+    password = models.CharField(max_length=64)
+    create_time = models.DateTimeField(auto_now_add=True)

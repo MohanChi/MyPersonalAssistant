@@ -24,6 +24,21 @@ def index(request):
     context = {'quote': res_json[0].get('quote'), 'author': res_json[0].get('author')}
     return HttpResponse(template.render(context, request))
 
+def register(request):
+    if request.method == "GET":
+        template = loader.get_template('AssistantApp/Register.html')
+        context = {}
+        return HttpResponse(template.render(context, request))
+    else:
+        userid = request.POST.get("userid")
+        password = request.POST.get("pwd")
+        User.objects.create(username=userid, password=password)
+        template = loader.get_template('AssistantApp/login.html')
+        context = {}
+        return HttpResponse(template.render(context, request))
+
+
+
 def login(request):
     if request.method == "GET":
         if request.session.get('is_login'): #already login

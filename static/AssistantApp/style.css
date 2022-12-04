@@ -516,3 +516,21 @@ img{
     /*border-radius: 10%;*/
 }
 
+.login{
+    width: 50%;
+}
+
+.box{
+    padding:50px;
+    position: absolute;
+    height: 400px;
+    left: 50%;
+    top: 41.6%;
+    width: 50%;
+    transform: translate(0%,-40%);
+    background: #ADADAD;
+    text-align: center;
+}
+
+
+
