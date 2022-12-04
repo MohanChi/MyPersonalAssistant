@@ -12,6 +12,8 @@ import json
 # Create your views here.
 
 def index(request):
+#     task_Model.objects.all().delete()
+#     User.objects.all().delete()
     template = loader.get_template('AssistantApp/main.html')
     category = ''
     api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
@@ -33,11 +35,17 @@ def register(request):
     else:
         userid = request.POST.get("userid")
         password = request.POST.get("pwd")
-        User.objects.create(username=userid, password=password)
-        template = loader.get_template('AssistantApp/login.html')
-        context = {}
-        return HttpResponse(template.render(context, request))
-
+#         User.objects.create(username=userid, password=password)
+        user = User()
+        user.username = userid
+        user.password = password
+        user.save()
+        user_test = User.objects.get(username=userid)
+        print("testttttttt: @@@@@@@@@@@: ", user_test.username, "!!!!!", user_test.password)
+#         template = loader.get_template('AssistantApp/login.html')
+#         context = {}
+#         return HttpResponse(template.render(context, request))
+        return redirect('/AssistantApp/login')
 
 
 def login(request):
@@ -49,11 +57,15 @@ def login(request):
             context = {}
             return HttpResponse(template.render(context, request))
     elif request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        if username == "cmh" and password == "123456":
+        username_post = request.POST.get("username")
+        password_post = request.POST.get("password")
+        print(username_post)
+        user = User.objects.get(username=username_post)
+        print(user.password)
+        if password_post == user.password:
+#         if username == "cmh" and password == "123456":
             request.session['is_login'] = True
-            request.session['username'] = username
+            request.session['username'] = username_post
             print("loginininininin-post-redirect-newtask")
             return redirect('/AssistantApp/new-task')
         else:
