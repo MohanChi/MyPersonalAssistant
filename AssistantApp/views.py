@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from datetime import datetime
 import requests
 import json
+from getmac import get_mac_address as gma
 
 # Create your views here.
 
@@ -69,6 +70,14 @@ def new_task(request):
         if request.session.get('is_login'):
             template = loader.get_template('AssistantApp/newtask.html')
             context = {'username': request.session["username"]}
+
+# #           get mac address, get lat and long, get time zone
+#             gma()
+#             api_url = 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAdmfGRE2pws3pM4bc6__iNR_HqIEzyjS4'
+#
+#             response = requests.get(api_url)
+#             print("response:!!!!!!: ", response.json)
+
             return HttpResponse(template.render(context, request))
         else:
             return redirect('/AssistantApp/login')
