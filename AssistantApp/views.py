@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from datetime import datetime
 import requests
 import json
-from getmac import get_mac_address as gma
+# from getmac import get_mac_address as gma
 
 # Create your views here.
 
