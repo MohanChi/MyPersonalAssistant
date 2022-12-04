@@ -73,7 +73,7 @@ def new_task(request):
 
 # #           get mac address, get lat and long, get time zone
 #             gma()
-#             api_url = 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAdmfGRE2pws3pM4bc6__iNR_HqIEzyjS4'
+#             api_url = 'https://www.googleapis.com/geolocation/v1/geolocate?key='
 #
 #             response = requests.get(api_url)
 #             print("response:!!!!!!: ", response.json)
