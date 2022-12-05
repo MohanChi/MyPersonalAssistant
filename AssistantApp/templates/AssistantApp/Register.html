@@ -49,12 +49,13 @@
         <div class="login">
             <form class="box" action="/AssistantApp/register" method="POST">
                 {% csrf_token %}
-                <h2>Register</h2>
+                <h2 style="text-align: center">Register</h2>
                 <input id="userid" type="text" name="userid" placeholder="User ID">
                 <input id="pwd" type="password" name="pwd" placeholder="password">
                 <input type="submit" name="" value="Register">
-                <span style="color: red;">{{ error_msg }}</span>
+                <span style="color: red;text-align: center"><p>{{ error_msg }}</p ></span>
             </form>
+            <p style="text-align: center"><a href="{% url 'login' %}"><button>Login</button></a ></p >
         </div>
 
 </body>
