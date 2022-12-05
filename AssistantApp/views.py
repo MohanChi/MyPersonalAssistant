@@ -43,9 +43,7 @@ def register(request):
             context = {"error_msg": "User id already exists, please re-enter or go to the login page"}
             return HttpResponse(template.render(context, request))
         else:
-            template = loader.get_template('AssistantApp/login.html')
-            context = {}
-            return HttpResponse(template.render(context, request))
+            return redirect('/AssistantApp/login')
 
 def login(request):
     if request.method == "GET":
