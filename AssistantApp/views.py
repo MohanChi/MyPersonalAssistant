@@ -7,10 +7,13 @@ from django.http import JsonResponse
 from datetime import datetime
 import requests
 import json
+# from getmac import get_mac_address as gma
 
 # Create your views here.
 
 def index(request):
+#     task_Model.objects.all().delete()
+#     User.objects.all().delete()
     template = loader.get_template('AssistantApp/main.html')
     category = ''
     api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
@@ -32,6 +35,7 @@ def register(request):
     else:
         userid = request.POST.get("userid")
         password = request.POST.get("pwd")
+
         User.objects.create(username=userid, password=password)
         result = User.objects.filter(username=userid)
         if result.exists():
@@ -43,8 +47,6 @@ def register(request):
             context = {}
             return HttpResponse(template.render(context, request))
 
-
-
 def login(request):
     if request.method == "GET":
         if request.session.get('is_login'): #already login
@@ -54,11 +56,15 @@ def login(request):
             context = {}
             return HttpResponse(template.render(context, request))
     elif request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        if username == "cmh" and password == "123456":
+        username_post = request.POST.get("username")
+        password_post = request.POST.get("password")
+        print(username_post)
+        user = User.objects.get(username=username_post)
+        print(user.password)
+        if password_post == user.password:
+#         if username == "cmh" and password == "123456":
             request.session['is_login'] = True
-            request.session['username'] = username
+            request.session['username'] = username_post
             print("loginininininin-post-redirect-newtask")
             return redirect('/AssistantApp/new-task')
         else:
@@ -146,7 +152,19 @@ def show_task(request):
     else:
         print("Error:", response.status_code, response.text)
 
-    context = {'username': request.session["username"], 'task': task, 'responseQuote': response.text}
+#     google map api
+    url = 'https://maps.googleapis.com/maps/api/staticmap?'
+    center = "Lafayette"
+    zoom = '10'
+    size = '400x350'
+    api_key = 'AIzaSyCf0T-bho9t6moCVd_EmfB3xfUbmV1C3Ac'
+    response = requests.get(url + "key=" + api_key + "&center=" + center
+                            + "&zoom=" + zoom + "&size="+ size
+                             + "&sensor=false")
+    print(url + api_key + "&center=" + center + "&zoom=" + zoom + "&size="+ size + "&sensor=false")
+#     print("response:!!!!!!: ", response.content)
+
+    context = {'username': request.session["username"], 'task': task, 'mapImage': response.content}
 
     return HttpResponse(template.render(context, request))
 
