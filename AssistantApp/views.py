@@ -33,9 +33,15 @@ def register(request):
         userid = request.POST.get("userid")
         password = request.POST.get("pwd")
         User.objects.create(username=userid, password=password)
-        template = loader.get_template('AssistantApp/login.html')
-        context = {}
-        return HttpResponse(template.render(context, request))
+        result = User.objects.filter(username=userid)
+        if result.exists():
+            template = loader.get_template('AssistantApp/Register.html')
+            context = {"error_msg": "User id already exists, please re-enter or go to the login page"}
+            return HttpResponse(template.render(context, request))
+        else:
+            template = loader.get_template('AssistantApp/login.html')
+            context = {}
+            return HttpResponse(template.render(context, request))
 
 
 

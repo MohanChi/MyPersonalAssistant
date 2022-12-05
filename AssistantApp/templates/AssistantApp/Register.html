@@ -1,13 +1,10 @@
-{% load static %}
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'AssistantApp/style.css' %}">
-    <script src="{% static 'JS/demo.js' %}"></script>
     <style>
         #userid, #pwd{
             border-radius: 24px;
@@ -56,6 +53,7 @@
                 <input id="userid" type="text" name="userid" placeholder="User ID">
                 <input id="pwd" type="password" name="pwd" placeholder="password">
                 <input type="submit" name="" value="Register">
+                <span style="color: red;">{{ error_msg }}</span>
             </form>
         </div>
 
