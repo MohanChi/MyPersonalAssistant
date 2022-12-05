@@ -35,18 +35,17 @@ def register(request):
     else:
         userid = request.POST.get("userid")
         password = request.POST.get("pwd")
-#         User.objects.create(username=userid, password=password)
-        user = User()
-        user.username = userid
-        user.password = password
-        user.save()
-        user_test = User.objects.get(username=userid)
-        print("testttttttt: @@@@@@@@@@@: ", user_test.username, "!!!!!", user_test.password)
-#         template = loader.get_template('AssistantApp/login.html')
-#         context = {}
-#         return HttpResponse(template.render(context, request))
-        return redirect('/AssistantApp/login')
 
+        User.objects.create(username=userid, password=password)
+        result = User.objects.filter(username=userid)
+        if result.exists():
+            template = loader.get_template('AssistantApp/Register.html')
+            context = {"error_msg": "User id already exists, please re-enter or go to the login page"}
+            return HttpResponse(template.render(context, request))
+        else:
+            template = loader.get_template('AssistantApp/login.html')
+            context = {}
+            return HttpResponse(template.render(context, request))
 
 def login(request):
     if request.method == "GET":
