@@ -20,11 +20,13 @@ def index(request):
     response = requests.get(api_url, headers={'X-Api-Key': 'Zf+5oCDSXry8Eo15++PzeQ==RS4UwzQeJ2KBxAFm'})
     if response.status_code == requests.codes.ok:
          print(response.text)
+         res_json = response.json()
+         print(res_json[0].get('quote'))
+         context = {'quote': res_json[0].get('quote'), 'author': res_json[0].get('author')}
     else:
          print("Error:", response.status_code, response.text)
-    res_json = response.json()
-    print(res_json[0].get('quote'))
-    context = {'quote': res_json[0].get('quote'), 'author': res_json[0].get('author')}
+         context = {'quote': "There must be something wrong on the quote server!", 'author': "developers"}
+
     return HttpResponse(template.render(context, request))
 
 def register(request):
