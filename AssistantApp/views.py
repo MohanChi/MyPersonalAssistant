@@ -82,14 +82,6 @@ def new_task(request):
         if request.session.get('is_login'):
             template = loader.get_template('AssistantApp/newtask.html')
             context = {'username': request.session["username"]}
-
-# #           get mac address, get lat and long, get time zone
-#             gma()
-#             api_url = 'https://www.googleapis.com/geolocation/v1/geolocate?key='
-#
-#             response = requests.get(api_url)
-#             print("response:!!!!!!: ", response.json)
-
             return HttpResponse(template.render(context, request))
         else:
             return redirect('/AssistantApp/login')
@@ -161,7 +153,19 @@ def show_task(request):
     else:
         print("Error:", response.status_code, response.text)
 
-    context = {'username': request.session["username"], 'task': task, 'responseQuote': response.text}
+#     google map api
+    url = 'https://maps.googleapis.com/maps/api/staticmap?'
+    center = "Lafayette"
+    zoom = '10'
+    size = '400x350'
+    api_key = 'AIzaSyCf0T-bho9t6moCVd_EmfB3xfUbmV1C3Ac'
+    response = requests.get(url + "key=" + api_key + "&center=" + center
+                            + "&zoom=" + zoom + "&size="+ size
+                             + "&sensor=false")
+    print(url + api_key + "&center=" + center + "&zoom=" + zoom + "&size="+ size + "&sensor=false")
+#     print("response:!!!!!!: ", response.content)
+
+    context = {'username': request.session["username"], 'task': task, 'mapImage': response.content}
 
     return HttpResponse(template.render(context, request))
 
